@@ -677,46 +677,46 @@
         closeBtn.addEventListener('click', closeMenu);
 
         // Close menu when clicking a link
-        links.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
+        // links.forEach(link => {
+        //     link.addEventListener('click', closeMenu);
+        // });
 
-        // Affiliate Redirect Logic with Delay
-        const overlay = document.getElementById('redirect-overlay');
-        const affiliateLinks = document.querySelectorAll('a[href*="saguaro.com"]');
-        let isRedirecting = false;
+        // // Affiliate Redirect Logic with Delay
+        // const overlay = document.getElementById('redirect-overlay');
+        // const affiliateLinks = document.querySelectorAll('a[href*="saguaro.com"]');
+        // let isRedirecting = false;
 
-        // Fix Back Button Stuck Overlay
-        window.addEventListener('pageshow', (event) => {
-            // Reset state if page is loaded from cache (back button)
-            overlay.classList.add('opacity-0', 'pointer-events-none');
-            isRedirecting = false;
-        });
+        // // Fix Back Button Stuck Overlay
+        // window.addEventListener('pageshow', (event) => {
+        //     // Reset state if page is loaded from cache (back button)
+        //     overlay.classList.add('opacity-0', 'pointer-events-none');
+        //     isRedirecting = false;
+        // });
 
-        const performRedirect = (url) => {
-            if (isRedirecting) return;
-            isRedirecting = true;
+        // const performRedirect = (url) => {
+        //     if (isRedirecting) return;
+        //     isRedirecting = true;
 
-            // Mark as redirected in session to prevent loop on back button
-            sessionStorage.setItem('auto_redirect_done', 'true');
+        //     // Mark as redirected in session to prevent loop on back button
+        //     sessionStorage.setItem('auto_redirect_done', 'true');
 
-            // Show loading overlay
-            overlay.classList.remove('opacity-0', 'pointer-events-none');
+        //     // Show loading overlay
+        //     overlay.classList.remove('opacity-0', 'pointer-events-none');
 
-            // Random delay between 1000ms (1s) and 2000ms (2s)
-            const delay = Math.floor(Math.random() * (2000 - 1000 + 1) + 1000);
+        //     // Random delay between 1000ms (1s) and 2000ms (2s)
+        //     const delay = Math.floor(Math.random() * (2000 - 1000 + 1) + 1000);
 
-            setTimeout(() => {
-                window.location.href = url;
-            }, delay);
-        };
+        //     setTimeout(() => {
+        //         window.location.href = url;
+        //     }, delay);
+        // };
 
-        affiliateLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-                performRedirect(this.href);
-            });
-        });
+        // affiliateLinks.forEach(link => {
+        //     link.addEventListener('click', function (e) {
+        //         e.preventDefault();
+        //         performRedirect(this.href);
+        //     });
+        // });
 
         // Auto-redirect removed as per request for better SEO and UX
     </script>
